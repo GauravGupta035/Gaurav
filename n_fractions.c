@@ -27,6 +27,18 @@ Fraction addition(Fraction f1, Fraction f2)
     return res;
 }
 
+Fraction total_sum(Fraction arr[], int size)
+{
+    Fraction total;
+    total.num = 0;
+    total.deno = 1;
+
+    for (int i = 0; i < size; i++)
+        total = addition(total, arr[i]);
+
+    return total;
+}
+
 int gcd(int num, int deno)
 {
     int div;
@@ -39,13 +51,18 @@ int gcd(int num, int deno)
     return div;
 }
 
+Fraction output(Fraction f, int divisor)
+{
+    f.num /= divisor;
+    f.deno /= divisor;
+
+    printf("The answer is: %d/%d",f.num, f.deno);
+}
+
 int main()
 {
     int n, divisor;
     Fraction f, result;
-
-    result.num = 0;
-    result.deno = 1;
 
     printf("Enter number of fractions: ");
     scanf("%d",&n);
@@ -65,19 +82,12 @@ int main()
             fracs[i] = f;
         }
 
-        for (int i = 0; i < n; i++)
-        {
-            result = addition(result, fracs[i]);
-        }
+        result = total_sum(fracs, n);
             
     }
 
     divisor = gcd(result.num, result.deno);
-
-    result.num /= divisor;
-    result.deno /= divisor;
-
-    printf("The answer is: %d/%d",result.num, result.deno);
+    output(result, divisor);
 
     return 0;
 }
