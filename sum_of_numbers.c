@@ -32,7 +32,7 @@ int output(int sum)
     printf("The sum is %d", sum);
 }
 
-int main () 
+int main() 
 {
     int n, sum;
     n = input();
