@@ -19,9 +19,16 @@ Fraction input()
     return f;
 }
 
-void output(Fraction sum)
+int gcd(int num, int deno)
 {
-    printf("The sum is %d/%d", sum.num, sum.deno);
+    int div;
+    for (int i = 1; i <= num && i <= deno; i++)
+    {
+        if (num % i == 0 && deno % i == 0)
+            div = i;
+    }
+
+    return div;
 }
 
 Fraction addition(Fraction A, Fraction B)
@@ -35,11 +42,19 @@ Fraction addition(Fraction A, Fraction B)
 
 int main()
 {
-    Fraction A, B, s;
+    Fraction A, B, s, result;
+    int divisor;
+
     A = input();
     B = input();
     s = addition(A, B);
-    output(s);
+
+    divisor = gcd(s.num, s.deno);
+
+    s.num /= divisor;
+    s.deno /= divisor;
+
+   printf("The sum is %d/%d", s.num, s.deno);
 
     return 0;
 }
