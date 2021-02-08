@@ -1,6 +1,6 @@
 //WAP to find the sum of n fractions.
 #include <stdio.h>
-#include <stdio.h>
+
 struct fraction
 {
     int num;
@@ -39,7 +39,7 @@ int gcd(int num, int deno)
     return div;
 }
 
-int main(void)
+int main()
 {
     int n, divisor;
     Fraction f, result;
@@ -57,10 +57,7 @@ int main(void)
 
     else
     {
-        Fraction fracs[n];
-
-        result.num = 0;
-        result.deno = 1; 
+        Fraction fracs[n]; 
 
         for (int i = 0; i < n; i++)
         {
