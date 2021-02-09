@@ -40,7 +40,7 @@ Fraction addition(Fraction A, Fraction B)
     return sum;
 }
 
-Fraction output(Fraction f, int divisor)
+void output(Fraction f, int divisor)
 {
 
 	f.num /= divisor;
