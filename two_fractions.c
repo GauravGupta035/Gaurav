@@ -40,9 +40,18 @@ Fraction addition(Fraction A, Fraction B)
     return sum;
 }
 
+Fraction output(Fraction f, int divisor)
+{
+
+	f.num /= divisor;
+	f.deno /= divisor;
+
+	printf("The answer is: %d/%d", f.num, f.deno);
+}
+
 int main()
 {
-    Fraction A, B, s, result;
+    Fraction A, B, s;
     int divisor;
 
     A = input();
@@ -50,11 +59,7 @@ int main()
     s = addition(A, B);
 
     divisor = gcd(s.num, s.deno);
-
-    s.num /= divisor;
-    s.deno /= divisor;
-
-   printf("The sum is %d/%d", s.num, s.deno);
+    output(s, divisor);
 
     return 0;
 }
