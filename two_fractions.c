@@ -40,12 +40,16 @@ Fraction addition(Fraction A, Fraction B)
     return sum;
 }
 
-void output(Fraction f, int divisor)
+Fraction reduce_lowest(Fraction f, int divisor)
 {
-
-	f.num /= divisor;
+    f.num /= divisor;
 	f.deno /= divisor;
 
+    return f;
+}
+
+void output(Fraction f)
+{
 	printf("The answer is: %d/%d", f.num, f.deno);
 }
 
@@ -59,7 +63,8 @@ int main()
     s = addition(A, B);
 
     divisor = gcd(s.num, s.deno);
-    output(s, divisor);
+    s = reduce_lowest(s, divisor);
+    output(s);
 
     return 0;
 }
