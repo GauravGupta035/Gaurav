@@ -50,18 +50,23 @@ int gcd(int num, int deno)
 	return div;
 }
 
-Fraction output(Fraction f, int divisor)
+Fraction reduce_lowest(Fraction f, int divisor)
 {
-	f.num /= divisor;
+    f.num /= divisor;
 	f.deno /= divisor;
 
+    return f;
+}
+
+Fraction output(Fraction f, int divisor)
+{
 	printf("The answer is: %d/%d", f.num, f.deno);
 }
 
 int main()
 {
 	int n, divisor;
-	Fraction f, result;
+	Fraction result;
 
 	printf("Enter the number of fractions: ");
 	scanf("%d", &n);
@@ -72,16 +77,14 @@ int main()
 	{
 		Fraction fracs[n];
 
-		for (int i = 0; i < n; i++)
-		{
-			f = input();
-			fracs[i] = f;
-		}
+		for (int i = 0; i< n; i++)
+			fracs[i] = input();
 
 		result = total_sum(fracs, n);
 	}
 
 	divisor = gcd(result.num, result.deno);
+	result = reduce_lowest(result, divisor);
 	output(result, divisor);
 
 return 0;
