@@ -27,18 +27,6 @@ Fraction addition(Fraction f1, Fraction f2)
 	return res;
 }
 
-Fraction total_sum(Fraction arr[], int size)
-{
-	Fraction total;
-	total.num = 0;
-	total.deno = 1;
-
-	for (int i = 0; i < size; i++)
-		total = addition(total, arr[i]);
-
-	return total;
-}
-
 int gcd(int num, int deno)
 {
 	int div;
@@ -58,7 +46,22 @@ Fraction reduce_lowest(Fraction f, int divisor)
     return f;
 }
 
-Fraction output(Fraction f, int divisor)
+Fraction total_sum(Fraction arr[], int size)
+{
+	Fraction total;
+	total.num = 0;
+	total.deno = 1;
+
+	for (int i = 0; i < size; i++)
+		total = addition(total, arr[i]);
+	
+	int divisor = gcd(total.num, total.deno);
+	total = reduce_lowest(total, divisor);
+
+	return total;
+}
+
+Fraction output(Fraction f)
 {
 	printf("The answer is: %d/%d", f.num, f.deno);
 }
@@ -82,10 +85,7 @@ int main()
 
 		result = total_sum(fracs, n);
 	}
+	output(result);
 
-	divisor = gcd(result.num, result.deno);
-	result = reduce_lowest(result, divisor);
-	output(result, divisor);
-
-return 0;
+	return 0;
 }
