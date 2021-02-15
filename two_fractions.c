@@ -22,6 +22,7 @@ Fraction input()
 int gcd(int num, int deno)
 {
     int div;
+    // We start from i = 1 because division by zero is not possible
     for (int i = 1; i <= num && i <= deno; i++)
     {
         if (num % i == 0 && deno % i == 0)
@@ -31,11 +32,11 @@ int gcd(int num, int deno)
     return div;
 }
 
-Fraction addition(Fraction A, Fraction B)
+Fraction addition(Fraction a, Fraction b)
 {
     Fraction sum;
-    sum.deno = A.deno * B.deno;
-    sum.num = (A.num * B.deno) + (B.num * A.deno);
+    sum.deno = a.deno * b.deno;
+    sum.num = (a.num * b.deno) + (b.num * a.deno);
 
     return sum;
 }
@@ -48,9 +49,9 @@ Fraction reduce_lowest(Fraction f, int divisor)
     return f;
 }
 
-void output(Fraction A, Fraction B, Fraction F)
+void output(Fraction a, Fraction b, Fraction f)
 {
-	printf("%d/%d + %d/%d = %d/%d", A.num, A.deno, B.num, B.deno, F.num, F.deno);
+	printf("%d/%d + %d/%d = %d/%d", a.num, a.deno, b.num, b.deno, f.num, f.deno);
 }
 
 int main()
