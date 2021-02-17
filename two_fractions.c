@@ -23,7 +23,7 @@ int gcd(int num, int deno)
 {
     int div;
     // We start from i = 1 because division by zero is not possible
-    for (int i = 1; i <= num && i <= deno; i++)
+    for (int i = 2; i <= num && i <= deno; i++)
     {
         if (num % i == 0 && deno % i == 0)
             div = i;
