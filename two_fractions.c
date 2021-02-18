@@ -32,21 +32,24 @@ int gcd(int num, int deno)
     return div;
 }
 
-Fraction addition(Fraction a, Fraction b)
-{
-    Fraction sum;
-    sum.deno = a.deno * b.deno;
-    sum.num = (a.num * b.deno) + (b.num * a.deno);
-
-    return sum;
-}
-
 Fraction reduce_lowest(Fraction f, int divisor)
 {
     f.num /= divisor;
 	f.deno /= divisor;
 
     return f;
+}
+
+Fraction addition(Fraction a, Fraction b)
+{
+    Fraction sum;
+    sum.deno = a.deno * b.deno;
+    sum.num = (a.num * b.deno) + (b.num * a.deno);
+
+    int divisor = gcd(sum.num, sum.deno);
+    sum = reduce_lowest(sum, divisor);
+
+    return sum;
 }
 
 void output(Fraction a, Fraction b, Fraction f)
@@ -62,9 +65,6 @@ int main()
     A = input();
     B = input();
     S = addition(A, B);
-
-    divisor = gcd(S.num, S.deno);
-    S = reduce_lowest(S, divisor);
     output(A, B, S);
 
     return 0;
