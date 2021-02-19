@@ -60,7 +60,6 @@ void output(Fraction a, Fraction b, Fraction f)
 int main()
 {
     Fraction A, B, S;
-    int divisor;
 
     A = input();
     B = input();
