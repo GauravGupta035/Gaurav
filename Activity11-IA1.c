@@ -85,7 +85,7 @@ void compute_one_gradebook(Gradebook gb)
 
 void compute_n_gradebooks(int n, Gradebook gb[n])
 {
-    for (int i =0; i < n; i++)
+    for (int i = 0; i < n; i++)
         compute_one_gradebook(gb[i]);
 }
 
@@ -101,7 +101,7 @@ void print_n_student(int n, Gradebook gb[n])
         printf("%s", gb[i].subjectName);
 
         for (int j = 0; j < gb[i].no_students; j++)
-            print_one_student(gb[i].student[i]);
+            print_one_student(gb[i].student[j]);
     }
 }
 
